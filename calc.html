@@ -8,43 +8,74 @@
 <table border = 1>
 
 <tr>
-	<td align = right colspan = 4>0</td>
+	<td align = right colspan = 4 id = 'result'>0</td>
 </tr>
 <tr>
-	<td align = center width = '30px' height = '30px'>AC</td>
-	<td align = center width = '30px' >+/-</td>
-	<td align = center width = '30px' >%</td>
-	<td align = center width = '30px' >/</td>
+	<td align = center width = '30px' height = '30px' id = 'clear'>AC</td>
+	<td align = center width = '30px' id = 'sign'>+/-</td>
+	<td align = center width = '30px' id = 'perc'>%</td>
+	<td align = center width = '30px' id = 'div'>/</td>
 </tr>
 <tr>
-	<td align = center height = '30px'>7</td>
-	<td align = center >8</td>
-	<td align = center >9</td>
-	<td align = center >x</td>
+	<td align = center height = '30px' id = 'num7'>7</td>
+	<td align = center id = 'num8'>8</td>
+	<td align = center id = 'num9'>9</td>
+	<td align = center id = 'mult'>*</td>
 </tr>
 <tr>
-	<td align = center height = '30px'>4</td>
-	<td align = center >5</td>
-	<td align = center >6</td>
-	<td align = center >-</td>
+	<td align = center height = '30px' id = 'num4'>4</td>
+	<td align = center id ='num5' >5</td>
+	<td align = center id ='num6'>6</td>
+	<td align = center id ='sub'>-</td>
 </tr>
 <tr>
-	<td align = center height = '30px'>1</td>
-	<td align = center >2</td>
-	<td align = center >3</td>
-	<td align = center >+</td>
+	<td align = center height = '30px' id = 'num1'>1</td>
+	<td align = center id = 'num2'>2</td>
+	<td align = center id = 'num3'>3</td>
+	<td align = center id = 'plus'>+</td>
 </tr>
 <tr>
-	<td align = left colspan = 2>0</td>
-	<td align = center>.</td>
-	<td align = center>=</td>
+	<td align = left colspan = 2 id ='num0'>0</td>
+	<td align = center id = 'decimal'>.</td>
+	<td align = center id = 'equal'>=</td>
 </tr>
 
 </table>
 
 
 
+<script>
 
+function printSymbol(e)
+{
+	let result = document.getElementById("result");
+	let obj = e.target;
+	result.textContent = result.textContent + obj.textContent;
+}
+
+let result = document.getElementById("result");
+
+let num1 = document.getElementById("num1");
+let num2 = document.getElementById("num2");
+let num3 = document.getElementById("num3");
+let num4 = document.getElementById("num4");
+let num5 = document.getElementById("num5");
+let num6 = document.getElementById("num6");
+let num7 = document.getElementById("num7");
+let num8 = document.getElementById("num8");
+let num9 = document.getElementById("num9");
+
+num1.addEventListener("click", printSymbol);
+num2.addEventListener("click", printSymbol);
+num3.addEventListener("click", printSymbol);
+num4.addEventListener("click", printSymbol);
+num5.addEventListener("click", printSymbol);
+num6.addEventListener("click", printSymbol);
+num7.addEventListener("click", printSymbol);
+num8.addEventListener("click", printSymbol);
+num9.addEventListener("click", printSymbol);
+
+</script>
 </body>
 
 </html>
