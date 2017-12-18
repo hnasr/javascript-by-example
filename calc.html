@@ -46,6 +46,14 @@
 
 <script>
 
+/*
+function clearScreen()
+{
+	document.getElementById("result").textContent =0;
+}
+*/
+
+//this prints out symbol on the calculator screen..
 function printSymbol(e)
 {
 	let result = document.getElementById("result");
@@ -55,6 +63,7 @@ function printSymbol(e)
 
 let result = document.getElementById("result");
 
+let num0 = document.getElementById("num0");
 let num1 = document.getElementById("num1");
 let num2 = document.getElementById("num2");
 let num3 = document.getElementById("num3");
@@ -64,7 +73,14 @@ let num6 = document.getElementById("num6");
 let num7 = document.getElementById("num7");
 let num8 = document.getElementById("num8");
 let num9 = document.getElementById("num9");
+let sub = document.getElementById("sub")
+let plus = document.getElementById("plus");
+let mult = document.getElementById("mult");
+let div = document.getElementById("div");
+let decimal = document.getElementById("decimal");
+let clear = document.getElementById("clear");
 
+num0.addEventListener("click", printSymbol);
 num1.addEventListener("click", printSymbol);
 num2.addEventListener("click", printSymbol);
 num3.addEventListener("click", printSymbol);
@@ -74,6 +90,15 @@ num6.addEventListener("click", printSymbol);
 num7.addEventListener("click", printSymbol);
 num8.addEventListener("click", printSymbol);
 num9.addEventListener("click", printSymbol);
+sub.addEventListener("click", printSymbol);
+plus.addEventListener("click", printSymbol);
+mult.addEventListener("click", printSymbol);
+div.addEventListener("click", printSymbol);
+decimal.addEventListener("click", printSymbol);
+
+clear.addEventListener("click", 
+	() => document.getElementById("result").textContent = 0 );
+//clear.addEventListener("click", clearScreen);
 
 </script>
 </body>
