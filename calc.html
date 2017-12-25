@@ -79,6 +79,7 @@ let mult = document.getElementById("mult");
 let div = document.getElementById("div");
 let decimal = document.getElementById("decimal");
 let clear = document.getElementById("clear");
+let equal = document.getElementById("equal");
 
 num0.addEventListener("click", printSymbol);
 num1.addEventListener("click", printSymbol);
@@ -99,6 +100,10 @@ decimal.addEventListener("click", printSymbol);
 clear.addEventListener("click", 
 	() => document.getElementById("result").textContent = 0 );
 //clear.addEventListener("click", clearScreen);
+
+equal.addEventListener("click", 
+			e => 
+				result.textContent = eval(result.textContent) )
 
 </script>
 </body>
