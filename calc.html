@@ -58,8 +58,23 @@ function printSymbol(e)
 {
 	let result = document.getElementById("result");
 	let obj = e.target;
+ 	
 	result.textContent = result.textContent + obj.textContent;
 }
+
+//if the clicked object is a digit 
+function printDigit(e)
+{
+	let result = document.getElementById("result");
+	let obj = e.target;
+ 	
+ 	if (result.textContent == 0)
+ 		result.textContent = obj.textContent;
+ 	else
+		result.textContent = result.textContent + obj.textContent;
+}
+
+
 
 let result = document.getElementById("result");
 
@@ -81,16 +96,16 @@ let decimal = document.getElementById("decimal");
 let clear = document.getElementById("clear");
 let equal = document.getElementById("equal");
 
-num0.addEventListener("click", printSymbol);
-num1.addEventListener("click", printSymbol);
-num2.addEventListener("click", printSymbol);
-num3.addEventListener("click", printSymbol);
-num4.addEventListener("click", printSymbol);
-num5.addEventListener("click", printSymbol);
-num6.addEventListener("click", printSymbol);
-num7.addEventListener("click", printSymbol);
-num8.addEventListener("click", printSymbol);
-num9.addEventListener("click", printSymbol);
+num0.addEventListener("click", printDigit);
+num1.addEventListener("click", printDigit);
+num2.addEventListener("click", printDigit);
+num3.addEventListener("click", printDigit);
+num4.addEventListener("click", printDigit);
+num5.addEventListener("click", printDigit);
+num6.addEventListener("click", printDigit);
+num7.addEventListener("click", printDigit);
+num8.addEventListener("click", printDigit);
+num9.addEventListener("click", printDigit);
 sub.addEventListener("click", printSymbol);
 plus.addEventListener("click", printSymbol);
 mult.addEventListener("click", printSymbol);
