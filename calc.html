@@ -8,12 +8,14 @@
 <table border = 1>
 
 <tr>
-	<td align = right colspan = 4 id = 'result'>0</td>
+	<td align = right colspan = 4>
+		<input type ='textbox' id = 'result' width = '200px' value = 0> 
+	</td>
 </tr>
 <tr>
 	<td align = center width = '30px' height = '30px' id = 'clear'>AC</td>
-	<td align = center width = '30px' id = 'sign'>+/-</td>
-	<td align = center width = '30px' id = 'perc'>%</td>
+	<td align = center width = '30px' id = 'leftp'>(</td>
+	<td align = center width = '30px' id = 'rightp'>)</td>
 	<td align = center width = '30px' id = 'div'>/</td>
 </tr>
 <tr>
@@ -59,7 +61,7 @@ function printSymbol(e)
 	let result = document.getElementById("result");
 	let obj = e.target;
  	
-	result.textContent = result.textContent + obj.textContent;
+	result.value = result.value + obj.textContent;
 }
 
 //if the clicked object is a digit 
@@ -68,10 +70,10 @@ function printDigit(e)
 	let result = document.getElementById("result");
 	let obj = e.target;
  	
- 	if (result.textContent == 0)
- 		result.textContent = obj.textContent;
+ 	if (result.value == 0)
+ 		result.value = obj.textContent;
  	else
-		result.textContent = result.textContent + obj.textContent;
+		result.value = result.value + obj.textContent;
 }
 
 
@@ -95,6 +97,8 @@ let div = document.getElementById("div");
 let decimal = document.getElementById("decimal");
 let clear = document.getElementById("clear");
 let equal = document.getElementById("equal");
+let rightp = document.getElementById("rightp");
+let leftp = document.getElementById("leftp");
 
 num0.addEventListener("click", printDigit);
 num1.addEventListener("click", printDigit);
@@ -111,14 +115,14 @@ plus.addEventListener("click", printSymbol);
 mult.addEventListener("click", printSymbol);
 div.addEventListener("click", printSymbol);
 decimal.addEventListener("click", printSymbol);
+leftp.addEventListener("click", printSymbol);
+rightp.addEventListener("click", printSymbol);
 
 clear.addEventListener("click", 
-	() => document.getElementById("result").textContent = 0 );
+	() => document.getElementById("result").value = 0 );
 //clear.addEventListener("click", clearScreen);
 
-equal.addEventListener("click", 
-			e => 
-				result.textContent = eval(result.textContent) )
+equal.addEventListener("click", e => result.value = eval(result.value) )
 
 </script>
 </body>
