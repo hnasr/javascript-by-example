@@ -1,4 +1,93 @@
 'use strict'
+
+export class BattleField {
+
+    constructor (){
+        this.inputs = []
+        this.bullets = []
+        this.players = []
+        this.fleets = []
+
+    }
+
+
+    start() {
+        this.moveBullets();
+        this.moveAliens();
+        this.gc()
+    }
+    processInputs() {
+        const uInputs = this.inputs.filter(a=>a.processed==false)
+        //calculate inputs..
+        uInputs.forEach(i => {i.processed = true; i.unit.move(i.data)})
+    }
+
+    addFleet(fleet) {
+        this.fleets.push(fleet)
+    }
+
+    addPlayer(player) {
+        this.players.push(player)
+    }
+
+    draw(){
+        this.players.forEach(a=>a.draw())
+        this.fleets.forEach(f=>f.draw())
+        this.bullets.forEach(b=>b.draw())
+    }
+    shootBullet(unit) {
+        if (this.bullets.length < 50){
+            const b = unit.shoot()
+            this.bullets.push(b)
+        }
+    }
+
+    hit() {
+          //if a space bullet hit an alien, alien destroyed 
+          this.fleets.forEach(f=>f.aliens.forEach(a=>this.bullets.filter(a=>a.type === "space").forEach(b=>a.hit(b))))
+        
+          this.players.forEach(a=>this.bullets.filter(a=>a.type === "alien").forEach(b=>a.hit(b)))
+  
+    }
+
+    moveBullets() {
+        this.bullets.forEach(a => this.addInput( a, -1)) 
+        setTimeout(()=>this.moveBullets(), 10) 
+    }
+  
+
+   moveAliens() {
+        this.fleets.forEach(f=>this.addInput(f, -1))
+        setTimeout(()=>this.moveAliens(), 2000) 
+    }
+ 
+    
+    addInput(unit, data) {
+        this.inputs.push({"unit": unit, "data": data, "processed": false})
+    }
+
+     gc() {
+        //clear garbage 
+        this.bullets = this.bullets.filter(a=>!a.disabled)
+        this.fleets.forEach(f=> {
+            let disabledAliens = f.aliens.filter(a=>a.disabled)
+            disabledAliens.forEach(a=>this.bullets.push(a.shoot()))
+        })
+        
+        this.fleets.forEach(f=> f.aliens = f.aliens.filter(a=>!a.disabled))
+        this.inputs = this.inputs.filter(a=>!a.processed)
+        this.players = this.players.filter(a=>!a.disabled)
+       
+        if (this.players.length === 0)
+           alert("Game over")
+        else
+           setTimeout(()=>this.gc(), 1000)
+ 
+    }
+
+}
+
+
 export class SpaceShip {
         
         constructor(context) {
